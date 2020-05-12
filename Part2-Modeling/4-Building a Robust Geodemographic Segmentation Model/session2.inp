@@ -1,0 +1,31 @@
+# Registro (log) iniciado em 2020-05-12 15:39
+# Gravação de sessão de comandos (note que, provavelmente, este registro
+# precisará ser editado para ser usado como um script).
+open \
+  "E:\GitHub\Data-Science-A-Z\Part2-Modeling\4-Building a Robust Geodemographic Segmentation Model\P12-Churn-Modelling-With-Test-Data - Model.csv"
+dummify Geography
+dummify Gender
+rename 15 France
+rename 16 Spain
+rename 17 Germany
+rename 18 Female
+rename 19 Male
+Log_Balance =log10(Balance+1)
+# modelo 1
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Tenure Log_Balance
+fcast 10001 11000 --static
+fcast 10001 11000 --static
+# modelo 1
+fcast 10001 11000 Test_Predict
+# store "C:\Users\Fernando\Documents\gretl\P12-Churn-Modelling-With-Test-Data - Model-Forecast.csv"  RowNumber Test_Predict --csv
+# store "E:\GitHub\Data-Science-A-Z\Part2-Modeling\4-Building a Robust Geodemographic Segmentation Model\P12-Churn-Modelling-With-Test-Data - Model-Forecast.csv"  RowNumber Test_Predict --csv
+fcast 10001 11000 --static
+# modelo 2
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Tenure Log_Balance
+# modelo 3
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Tenure Log_Balance
+include oddsratios.gfn
+# btmp___0 = GUI_oddsratios()
