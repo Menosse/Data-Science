@@ -1,0 +1,2 @@
+1. Original Data - Original Copy, never change the data here
+2. Prepared Data - Copy from Original Data and start the data preparation

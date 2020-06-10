@@ -1,0 +1,21 @@
+USE DSTRAINING
+GO
+
+SELECT * FROM [P12-OrderBreakdown]
+
+UPDATE [P12-OrderBreakdown]
+SET [DISCOUNT] = NULL
+WHERE [DISCOUNT] = 0.5
+
+/* USE IS to pickup NULL Values */
+	SELECT * FROM [P12-OrderBreakdown]
+	WHERE [DISCOUNT] IS NULL
+
+	SELECT * FROM [P12-OrderBreakdown]
+	WHERE [DISCOUNT] IS NOT NULL
+
+UPDATE [P12-OrderBreakdown]
+SET [DISCOUNT] = 0.5
+WHERE [DISCOUNT] IS NULL
+
+SELECT * FROM [P12-OrderBreakdown]
